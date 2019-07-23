@@ -8,8 +8,8 @@ import web.SearchClient
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class ProductServiceImpl @Inject()(searchClient: SearchClient[Future])(implicit ec: ExecutionContext) extends
-   ProductService[Future] {
+class ProductServiceImpl @Inject()(searchClient: SearchClient[Future])
+                                  (implicit ec: ExecutionContext) extends ProductService[Future] {
 
    private val logger = Logger("application")
 

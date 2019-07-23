@@ -14,7 +14,7 @@ class SearchClientImpl @Inject()(ws: WSClient, config: Configuration) extends Se
    private final val apiKey = config.get[String]("search.apiKey")
    private final val apiVersion = config.get[String]("search.apiVersion")
 
-   override def search(query: String, top: Int) = {
+   override def search(query: String, top: Int,count:Boolean = true,gender:String="женщ") = {
       ws.url(url)
          .addHttpHeaders(
             "Content-Type" -> contentType,
@@ -22,8 +22,10 @@ class SearchClientImpl @Inject()(ws: WSClient, config: Configuration) extends Se
          )
          .addQueryStringParameters(
             "api-version" -> apiVersion,
-            "search" -> query,
-            "$top" -> top.toString
+            "search" -> s"""data/sex:$gender* $query~""",
+            "$top" -> top.toString,
+            "$count" -> count.toString,
+            "queryType" -> "full"
          ).get()
    }
 

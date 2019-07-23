@@ -1,11 +1,11 @@
-import com.typesafe.sbt.packager.docker.{DockerChmodType, DockerPermissionStrategy}
+import com.typesafe.sbt.packager.docker.{DockerChmodType}
 import sbt.Attributed
 
 enablePlugins(DockerPlugin)
 
 name := "LookAndLikeSolaris"
 
-version := "1.0"
+version := "1.1"
 
 lazy val `lookandlikesolaris` = (project in file(".")).enablePlugins(PlayScala)
 
@@ -39,6 +39,7 @@ javaOptions in Universal ++= Seq(
    "-Dpidfile.path=/dev/null"
 )
 
+dockerUsername := Some("lookandlike")
 dockerChmodType := DockerChmodType.UserGroupWriteExecute
 dockerAdditionalPermissions += (DockerChmodType.UserGroupWriteExecute, "/opt/docker/")
 dockerExposedPorts in Docker := Seq(9000)
