@@ -5,7 +5,7 @@ enablePlugins(DockerPlugin)
 
 name := "LookAndLikeSolaris"
 
-version := "1.3"
+version := "1.4"
 
 lazy val `lookandlikesolaris` = (project in file(".")).enablePlugins(PlayScala)
 
