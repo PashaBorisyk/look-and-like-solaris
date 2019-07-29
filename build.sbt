@@ -3,7 +3,7 @@ import sbt.Attributed
 
 enablePlugins(DockerPlugin)
 
-name := "LookAndLikeSolaris"
+name := "look-and-like-solaris"
 
 version := "1.4"
 
@@ -16,6 +16,7 @@ resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
 scalaVersion := "2.12.8"
 
 libraryDependencies ++= Seq(jdbc, ehcache, ws, specs2 % Test, guice)
+libraryDependencies += "io.swagger" %% "swagger-play2" % "1.7.1"
 
 mainClass in assembly := Some("play.core.server.ProdServerStart")
 fullClasspath in assembly += Attributed.blank(PlayKeys.playPackageAssets.value)
